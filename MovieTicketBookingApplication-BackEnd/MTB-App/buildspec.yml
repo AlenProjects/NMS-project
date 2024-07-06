@@ -1,0 +1,35 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+    commands:
+      - echo Installing dependencies...
+      - yum install -y unzip
+      - echo Downloading and extracting project zip from S3...
+      - aws s3 cp s3://odluser1366209-bucket1/demo-spring-boot-project.zip .
+      - unzip -o demo-spring-boot-project.zip
+      - echo Installing Maven...
+      - yum install -y maven
+      
+      
+  pre_build:
+    commands:
+      - echo Preparing for build...
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Maven project...
+      - mvn clean package
+      
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Copying JAR to S3...
+      - aws s3 cp target/demo-0.0.1-SNAPSHOT.jar s3://odluser1366209-bucket2/
+
+artifacts:
+  files:
+    - target/demo-0.0.1-SNAPSHOT.jar

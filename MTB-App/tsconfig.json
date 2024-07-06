@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",  // Changed to "node" for typical Angular projects
+    "importHelpers": true,
+    "target": "es2022",  // Adjusted to "es2022" for Angular compatibility
+    "module": "esnext",  // Adjusted to "esnext" for Angular compatibility
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "resolveJsonModule": true,  // Added for resolving JSON modules if needed
+    "baseUrl": "./",  // Added to specify the base directory for resolving modules
+    "paths": {
+      "@app/*": ["src/app/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts"
+  ],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
